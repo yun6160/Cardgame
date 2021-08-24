@@ -1,0 +1,36 @@
+#wrapper {
+  display: grid;
+  width: 100%;
+  place-items: center;
+  min-height: 70vh;
+}
+
+#rebutton {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  font-size: 25px;
+}
+
+#rebutton:hover {
+  background-color: black;
+  color: white;
+}
+
+img {
+  margin: 10px;
+}
+
+#cardground {
+  width: 70%;
+}
+
+.title {
+  font-family: "NanumSquare";
+  font-size: x-large;
+  margin-top: 10%;
+}
+
+#point {
+  margin-top: 20px;
+}

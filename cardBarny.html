@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/card.css" />
+
+  <title>Find your own drink, Barny</title>
+
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+  <!-- naver fonts -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Bootstrap core JS-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <!-- Core theme JS-->
+  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</head>
+
+<body>
+
+  <!--게임-->
+  <div id="wrapper" class="container" style="margin-bottom: 1%;">
+    <div class="title">
+      <p>숨어있는 바니를 찾고 적립금을 받아가세요!</p>
+    </div>
+    <div id="cardground"></div>
+    <br>
+    <div>
+      <form name="addPoint" action="/event/add_point2" method="post">
+        <input id="member_idx" type="hidden" name="member_idx" value="<sec:authentication property="principal.memberVO.member_idx" />
+        <input id="start_btn" type="button" style="display: none" class="btn btn-outline-warning" value='적립하기'/>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="/js/card.js"></script>
+  <script>
+    window.onload = function () {
+        $('#start_btn').click(function () {
+            function convertDateFormat(date) {
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                month = month >= 10 ? month : '0' + month;
+                var day = date.getDate();
+                day = day >= 10 ? day : '0' + day;
+                return [year, month, day].join('');
+            }
+
+            var today = convertDateFormat(new Date());
+            var participate_date = '${participate_date}';
+            if (participate_date == today) {
+                alert('해당 이벤트는 하루에 한번만 참여 가능합니다.')
+                return false
+            }
+            alert("적립되었습니다.");
+            document.addPoint.submit();
+        });
+
+    };
+</script>
+
+  
+</body>
+
+</html>
