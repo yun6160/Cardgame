@@ -11,4 +11,5 @@
 
 # 정보
 참고한 소스:
-[https://github.com/sjlee0724/CardGame](https://github.com/sjlee0724/CardGame)
+[https://github.com/sjlee0724/CardGame](https://github.com/sjlee0724/CardGame)  
+포트폴리오: https://jhyuun.notion.site/b8b36a4214964cd78539d006aefae5b8
