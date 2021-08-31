@@ -1,8 +1,3 @@
-function gamerestart() {
-  //게임 다시 시작 (페이지 다시 로딩)
-  window.location.reload();
-}
-
 function shuffle() {
   // 카드 섞기
   var carddeck = [
@@ -52,7 +47,7 @@ $(document).ready(function () {
     var CSS = $(this).attr("class"); // 클릭한애 클래스 속성의 값 위에서 클래스 값이 card1, card2, card2 back 이런식으로 했음
 
     if (check != true) {
-      $(this).attr("src", "/img/" + CSS + ".jpg"); // 클릭한애 <img src="./img/card2.jpg" class="card2">(예시) 열려있음
+      $(this).attr("src", "/img/" + CSS + ".jpg"); // 클릭한애 <img src="/img/card2.jpg" class="card2">(예시) 열려있음
       $(this).addClass("back"); //클릭한 애 <img src="./img/card2.jpg" class="card2 back">
     } else {
       console.log("back");
@@ -61,27 +56,30 @@ $(document).ready(function () {
 
     if (BackLength == 2) {
       //두개 선택됐을때 정렬이 찼을때
-      var FirstB = $(".back").eq(0).attr("class"); //class="card1 back(0)"
-      var SecondB = $(".back").eq(1).attr("class"); //class="card2 back(1)"
+      var FirstB = $(".back").eq(0).attr("class"); //class="card1 back"
+      var SecondB = $(".back").eq(1).attr("class"); //class="card2 back"
 
       var CSSCheck = $(".back").hasClass("card1");
 
       if (FirstB != SecondB) {
         setTimeout(function () {
-          $(".back").attr("src", "/img/backimg.jpg"); //clas="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
-          $("img").removeClass("back"); //깟다는 클래스 지워라
+          $(".back").attr("src", "/img/backimg.jpg"); //class="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
+          $("img").removeClass("back"); //열었다는 클래스 지워라
         }, 200);
       } else if (CSSCheck == false) {
         setTimeout(function () {
           $(".back").attr("src", "/img/backimg.jpg"); //clas="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
-          $("img").removeClass("back"); //깟다는 클래스 지워라
+          $("img").removeClass("back"); //열었다는 클래스 지워라
         }, 200);
       } else {
-        alert("바니 찾기 성공!");
-        alert("100 point 적립하세요!");
-        show();
+        setTimeout(function(){
+          alert("바니 찾기 성공!");
+          alert("100 point 적립하세요!");
+          show();
+  
+          return;
 
-        return;
+        }, 200);
       }
       BackLength = 0;
     }
