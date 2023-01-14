@@ -7,7 +7,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/card.css" />
 
-  <title>Find your own drink, Barny</title>
+  <title>BurnyBurny</title>
 
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
@@ -22,8 +22,6 @@
 
   <!-- Bootstrap core JS-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-  <!-- Core theme JS-->
-  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </head>
 
 <body>
@@ -62,7 +60,12 @@
                 return false
             }
             alert("적립되었습니다.");
-            document.addPoint.submit();
+            $(".open").attr("src", "/img/backimg.jpg"); //열었다는 클래스 지워라
+            $("#cardground").empty();
+            cardset();  //다시 카드 셋팅
+            //2023-01-15 바니 프로젝트안의 게임에서는 submit을 보내지만 단일 게임시 보내지않는다.
+            // document.addPoint.submit();
+            return;
         });
 
     };

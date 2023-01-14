@@ -6,15 +6,11 @@ function shuffle() {
     "card3",
     "card4",
     "card5",
-    "card6",
-    "card7",
     "card1",
     "card2",
     "card3",
     "card4",
-    "card5",
-    "card6",
-    "card7",
+    "card5"
   ];
   var j, x, i;
   for (i = carddeck.length; i; i -= 1) {
@@ -42,46 +38,44 @@ cardset();
 
 $(document).ready(function () {
   $(document).on("click", "img", function () {
-    //클릭시 id 값 가져와서 사진 매치 시키기
-    var check = $(this).hasClass("back"); // 클릭한 애 엘리먼트 안에 클래스 네임을 가진 애를 찾아줌 true/false
-    var CSS = $(this).attr("class"); // 클릭한애 클래스 속성의 값 위에서 클래스 값이 card1, card2, card2 back 이런식으로 했음
+    var check = $(this).hasClass("open"); // 클릭한 카드가 오픈된 카드인지 true/false
+    var CSS = $(this).attr("class"); // 클릭한애 클래스 값 클래스 값이 card1, card2, card2 open 이런식으로 했음
 
-    if (check != true) {
+    if (check != true) {  //카드가 오픈되지않은 카드일 경우
       $(this).attr("src", "/img/" + CSS + ".jpg"); // 클릭한애 <img src="/img/card2.jpg" class="card2">(예시) 열려있음
-      $(this).addClass("back"); //클릭한 애 <img src="./img/card2.jpg" class="card2 back">
+      $(this).addClass("open"); //클릭한 애 <img src="./img/card2.jpg" class="card2 open">
     } else {
-      console.log("back");
+      console.log("뒤집힌 카드");
     }
-    var BackLength = $(".back").length; //선택된 카드 정렬 길이
+    var openLength = $(".open").length; //선택된 카드 정렬 길이
 
-    if (BackLength == 2) {
+    if (openLength == 2) {
       //두개 선택됐을때 정렬이 찼을때
-      var FirstB = $(".back").eq(0).attr("class"); //class="card1 back"
-      var SecondB = $(".back").eq(1).attr("class"); //class="card2 back"
+      var FirstB = $(".open").eq(0).attr("class"); //class="card1 open"
+      var SecondB = $(".open").eq(1).attr("class"); //class="card2 open"
 
-      var CSSCheck = $(".back").hasClass("card1");
+      var CSSCheck = $(".open").hasClass("card1");  //당첨 카드인지 아닌지
 
       if (FirstB != SecondB) {
         setTimeout(function () {
-          $(".back").attr("src", "/img/backimg.jpg"); //class="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
-          $("img").removeClass("back"); //열었다는 클래스 지워라
+          $(".open").attr("src", "/img/backimg.jpg"); //class="open"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
+          $("img").removeClass("open"); //열었다는 클래스 지워라
         }, 200);
       } else if (CSSCheck == false) {
         setTimeout(function () {
-          $(".back").attr("src", "/img/backimg.jpg"); //clas="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
-          $("img").removeClass("back"); //열었다는 클래스 지워라
+          $(".open").attr("src", "/img/backimg.jpg"); //clas="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
+          $("img").removeClass("open"); //열었다는 클래스 지워라
         }, 200);
       } else {
         setTimeout(function(){
           alert("바니 찾기 성공!");
-          alert("100 point 적립하세요!");
           show();
   
           return;
 
         }, 200);
       }
-      BackLength = 0;
+      openLength = 0;
     }
   });
 });
