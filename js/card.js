@@ -27,7 +27,7 @@ function cardset() {
   var mixup = shuffle();
   for (var i = 0; i < mixup.length; i++) {
     var createcard =
-      "<img src='/img/backimg.jpg' class=" +
+      "<img src='img/backimg.jpg' class=" +
       mixup[i] +
       " width='100px' height='150px'>&nbsp";
     $("#cardground").append(createcard);
@@ -42,7 +42,7 @@ $(document).ready(function () {
     var CSS = $(this).attr("class"); // 클릭한애 클래스 값 클래스 값이 card1, card2, card2 open 이런식으로 했음
 
     if (check != true) {  //카드가 오픈되지않은 카드일 경우
-      $(this).attr("src", "/img/" + CSS + ".jpg"); // 클릭한애 <img src="/img/card2.jpg" class="card2">(예시) 열려있음
+      $(this).attr("src", "img/" + CSS + ".jpg"); // 클릭한애 <img src="/img/card2.jpg" class="card2">(예시) 열려있음
       $(this).addClass("open"); //클릭한 애 <img src="./img/card2.jpg" class="card2 open">
     } else {
       console.log("뒤집힌 카드");
@@ -58,12 +58,12 @@ $(document).ready(function () {
 
       if (FirstB != SecondB) {
         setTimeout(function () {
-          $(".open").attr("src", "/img/backimg.jpg"); //class="open"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
+          $(".open").attr("src", "img/backimg.jpg"); //class="open"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
           $("img").removeClass("open"); //열었다는 클래스 지워라
         }, 200);
       } else if (CSSCheck == false) {
         setTimeout(function () {
-          $(".open").attr("src", "/img/backimg.jpg"); //clas="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
+          $(".open").attr("src", "img/backimg.jpg"); //clas="back"인 애의 src 요소를 저걸로 바꿔라(다시 덮어라)
           $("img").removeClass("open"); //열었다는 클래스 지워라
         }, 200);
       } else {
